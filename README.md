@@ -1,2 +1,2 @@
 # AdvancedDjango
-This Repo I Praticed How to build blogs with Djanja
+This Repo I Praticed How to build blogs with Djanjo
