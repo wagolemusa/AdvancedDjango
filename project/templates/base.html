@@ -30,6 +30,7 @@
 </div>
 
 <!-- JQuery -->
+<script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity=" sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
@@ -37,5 +38,19 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.6.2/marked.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".content-markdown").each(function(){
+			var content = $(this).text()
+			console.log(content)
+			var markedContent = marked(content)
+			console.log(markedContent)
+			$(this).html(markedContent)
+		})
+	})
+
+</script>
 </body>
 </html>

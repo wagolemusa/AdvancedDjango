@@ -24,7 +24,10 @@ Linkedin
 
 <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title={{ share_string }}">Reddit</a>
  -->
-{{ instance.content|safe }}
+ <div class="content-markdown">
+		{{ instance.content|linebreaks }}
+	</div>
+	
 
 <p>Author: {{ instance.user }}<br/>
 <p>
