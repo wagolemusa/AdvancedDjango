@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block head_extra %}
+{{ form.media }}
+{% endblock head_extra %}
+
 {% block content %}
 
 <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}

@@ -26,7 +26,7 @@
 
     <small>{{ obj.publish }}</small></h3>
     <p>Author: {{ obj.user }}
-		<p>{{ obj.content|linebreaks|truncatechars:120 }}</p>
+		<p class="content-markdown">{{ obj.content|truncatechars:120 }}</p>
 		<p><a href="{{ obj.get_obsolute_url }} " class="btn btn-primary" role="button">Views</a></p>
 	</div>
 </div>
