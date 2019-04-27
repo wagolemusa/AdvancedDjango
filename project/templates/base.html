@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{% block head_title %} Try Django 2.2 {% endblock head_title %}</title>
+	<title>{% block head_title %} Advancing Django {% endblock head_title %}</title>
 	<link rel="stylesheet" href='{% static "css/base.css" %}' />
 	<!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
@@ -14,10 +14,25 @@
 	<style> 
 	{% block style %} {% endblock style %}
 	</style>
+
+
+{% block head_extra %} {% endblock head_extra %}
 </head>
 <body>
 
 <div id="fb-root"></div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".content-markdown").each(function(){
+			var content = $(this).text()
+			console.log(content)
+			var markedContent = marked(content)
+			console.log(markedContent)
+			$(this).html(markedContent)
+		})
+	})
+
+</script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=1994101844153657&autoLogAppEvents=1"></script>
 
 {% include "messages_display.html" %}
@@ -40,17 +55,6 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.6.2/marked.min.js"></script>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		$(".content-markdown").each(function(){
-			var content = $(this).text()
-			console.log(content)
-			var markedContent = marked(content)
-			console.log(markedContent)
-			$(this).html(markedContent)
-		})
-	})
 
-</script>
 </body>
 </html>
