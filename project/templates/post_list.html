@@ -20,13 +20,13 @@
       {% if obj.image %}
       		<img src="{{ obj.image.url }}" class="img-responsive">
       {% endif %}
-			<div class="caption">
+			<div class="caption post-detail-item">
       {% if obj.droft %}<h3>Staff Only: Draft</h3> {% endif %} {% if obj.publish > today %}<h3>Future Post</h3>{% endif %}
 		<h3><a href='{{ obj.get_obsolute_url }}'>{{ obj.title }}</a>
 
     <small>{{ obj.publish }}</small></h3>
     <p>Author: {{ obj.user }}
-		<p class="content-markdown">{{ obj.content|truncatechars:120 }}</p>
+		<p class="">{{ obj.get_markdown }}</p>
 		<p><a href="{{ obj.get_obsolute_url }} " class="btn btn-primary" role="button">Views</a></p>
 	</div>
 </div>
