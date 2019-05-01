@@ -47,6 +47,7 @@ class Post(models.Model):
 		return reverse("posts:detail", kwargs={"slug": self.slug})
 		# return "/posts/%s" %(self.id)
 
+	# create markdown function to pass it to posts list 
 	def get_markdown(self):
 		content = self.content
 		mark_downtext = markdown(content)
