@@ -5,7 +5,8 @@ from django.db import models
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
 from django.utils import timezone
-
+from markdown_deux import markdown
+from django.utils.safestring import mark_safe
 
 # Post.object.all()
 class PostManager(models.Manager):
@@ -46,6 +47,11 @@ class Post(models.Model):
 		return reverse("posts:detail", kwargs={"slug": self.slug})
 		# return "/posts/%s" %(self.id)
 
+	# create markdown function to pass it to posts list 
+	def get_markdown(self):
+		content = self.content
+		mark_downtext = markdown(content)
+		return mark_safe(mark_downtext)
 
 	class Meta:
 		ordering = ["-timestamp", "-updated"]
