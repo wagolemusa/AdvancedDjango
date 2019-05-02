@@ -6,3 +6,15 @@ h1{
 	color: #3F729B;
 }
 
+.wmd-panel{
+	margin-left: 5000px  !important;
+  margin-right: 5000px !important;
+}
+
+h2 {
+	color: red !important;
+}
+.mus h2{
+		color: red !important;
+
+}
