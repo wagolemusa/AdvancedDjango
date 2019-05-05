@@ -7,7 +7,7 @@ from django.utils.text import slugify
 from django.utils import timezone
 from markdown_deux import markdown
 from django.utils.safestring import mark_safe
-
+from comments.models import Comment
 # Post.object.all()
 class PostManager(models.Manager):
 	def all(self, *args, **kwargs):
@@ -52,6 +52,12 @@ class Post(models.Model):
 		content = self.content
 		mark_downtext = markdown(content)
 		return mark_safe(mark_downtext)
+
+	@property
+	def comments(self):
+		instance = self
+		qs = Comment.objects.filter_by_instance(instance)
+		return qs
 
 	class Meta:
 		ordering = ["-timestamp", "-updated"]
