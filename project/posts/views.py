@@ -2,7 +2,7 @@
 from urllib.parse import quote_plus  
 from django.core.paginator import Paginator
 from django.contrib import messages
-from django.contrib.contenttypes.models import ContentType
+# from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect, Http404
 from django.contrib.auth import authenticate
@@ -42,9 +42,9 @@ def post_detail(request, slug=None):
 			raise Http404
 	share_string = quote_plus(instance.content)
 	# comments generic foreginkeys
-	content_type = ContentType.objects.get_for_model(Post)
-	obj_id = instance.id
-	comments = Comment.objects.filter(content_type=content_type, object_id = obj_id)
+	# content_type = ContentType.objects.get_for_model(Post)
+	# obj_id = instance.id
+	comments = Comment.objects.filter_by_instance(instance)
 
 	context = {
 		"title": instance.title,
