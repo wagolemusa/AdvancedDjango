@@ -7,10 +7,14 @@ h1{
 }
 
 .wmd-panel{
-	margin-left: 5000px  !important;
-  margin-right: 5000px !important;
+	margin-left: 0px  !important;
+  margin-right: 0px !important;
 }
 
 h2 {
 	color: red !important;
+}
+.mus h2{
+		color: red !important;
+
 }
