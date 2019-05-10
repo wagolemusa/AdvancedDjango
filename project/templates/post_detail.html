@@ -34,9 +34,25 @@
 			<p>{{ comment.content }}</p>
 
 			<footer>Via {{ comment.user }} | {{ comment.timestamp|timesince }} ago</footer>
-			</blockquote>
+	</blockquote>
+
+			<!-- Replies -->
+		<blockquote>
+			{% for child_comment in comment.children %}
+			
+			<p>{{ child_comment.content }}</p>
+
+			<footer>Via {{ child_comment.user }} | {{ child_comment.timestamp|timesince }} ago</footer>
+		</blockquote>
+		{% endfor %}
+
+	<form method="POST" action=".">{% csrf_token %}
+		{{ comment_form|crispy }}
+		<input type="hidden" name="parent_id" value="{{ comment.id }}">
+		<input type="submit" value="Reply" class="btn btn-default">
+	</form>
 			<hr/>
-	{% endfor %}
+			{% endfor %}
 </div>
  
 <!-- <div class="fb-comments" data-href="{{ request.build_absolute_uri }} data-numposts="5"></div>
