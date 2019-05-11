@@ -33,13 +33,13 @@
 			
 			<p>{{ comment.content }}</p>
 
-			<footer>Via {{ comment.user }} | {{ comment.timestamp|timesince }} ago</footer>
-	</blockquote>
+			<footer>Via {{ comment.user }} | {{ comment.timestamp|timesince }} ago | {% if comment.children.count > 0 %} {{ comment.children.count }} Comment{% if comment.children.count > 1 %}s {% endif %}| {% endif %} <a class='comment-reply-btn' href='#'>Reply</a></footer>
 
 			<!-- Replies -->
-		<blockquote>
+	<div class='comment-reply' style="display:none;">
 			{% for child_comment in comment.children %}
-			
+			<blockquote>
+
 			<p>{{ child_comment.content }}</p>
 
 			<footer>Via {{ child_comment.user }} | {{ child_comment.timestamp|timesince }} ago</footer>
@@ -51,6 +51,10 @@
 		<input type="hidden" name="parent_id" value="{{ comment.id }}">
 		<input type="submit" value="Reply" class="btn btn-default">
 	</form>
+		</div>
+			</blockquote>
+
+
 			<hr/>
 			{% endfor %}
 </div>
