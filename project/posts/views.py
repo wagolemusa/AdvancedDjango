@@ -14,6 +14,7 @@ from comments.models import Comment
 # Create your views here.
 from .models import Post
 from .forms import PostForms
+from .utils import get_red_time
 
 def post_create(request):
 	"""
@@ -42,6 +43,10 @@ def post_detail(request, slug=None):
 		if not request.user.is_staff or not request.user.is_superuser:
 			raise Http404
 	share_string = quote_plus(instance.content)
+
+	# counting words 
+	print(get_red_time(instance.get_markdown()))
+
 	comments = instance.comments
 	initial_data = {
 			"content_type": instance.get_content_type,
