@@ -9,6 +9,7 @@ from django.utils import timezone
 from markdown_deux import markdown
 from django.utils.safestring import mark_safe
 from comments.models import Comment
+from .utils import get_red_time
 # Post.object.all()
 class PostManager(models.Manager):
 	def all(self, *args, **kwargs):
@@ -34,6 +35,7 @@ class Post(models.Model):
 	content = models.TextField()
 	draft = models.BooleanField(default=0)
 	publish = models.DateField(auto_now=False, auto_now_add=False)
+	read_time = models.TimeField(null=True, blank=True)
 	updated = models.DateTimeField(auto_now=True, auto_now_add=False)
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 	# objects = PostManager()
@@ -84,5 +86,10 @@ def create_slug(instance, new_slug=None):
 def pre_save_post_reciever(sender, instance, *args, **kwargs):
 	if not instance.slug:
 		instance.slug = create_slug(instance)
+
+	if instance.content:
+		html_string = instance.get_markdown()
+		read_time_var = get_red_time(html_string)
+		instance.read_time = read_time_var
 
 pre_save.connect(pre_save_post_reciever, sender=Post)
