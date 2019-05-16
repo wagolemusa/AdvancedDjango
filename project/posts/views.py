@@ -14,7 +14,7 @@ from comments.models import Comment
 # Create your views here.
 from .models import Post
 from .forms import PostForms
-from .utils import get_red_time
+# from .utils import get_red_time
 
 def post_create(request):
 	"""
@@ -45,7 +45,7 @@ def post_detail(request, slug=None):
 	share_string = quote_plus(instance.content)
 
 	# counting words 
-	print(get_red_time(instance.get_markdown()))
+	# print(get_red_time(instance.get_markdown()))
 
 	comments = instance.comments
 	initial_data = {
