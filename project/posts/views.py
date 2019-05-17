@@ -16,6 +16,8 @@ from .models import Post
 from .forms import PostForms
 # from .utils import get_red_time
 
+
+
 def post_create(request):
 	"""
 	Methods creates the Posts

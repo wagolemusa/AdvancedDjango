@@ -5,7 +5,25 @@ from django.shortcuts import render, get_object_or_404
 from .models import Comment
 from .forms import CommentForm
 
+def comment_delete(request, id):
+	"""
+	Delete comments
+	"""
+	obj = get_object_or_404(Comment, id=id)
+	if request.method == "POST":
+		parent_obj_url = obj.content_object.get_absolute_url()
+		obj.delete()
+		messages.success(request, "This has been deleted.")
+		return HttpResponseRedirect(parent_obj_url)
+	context = {
+		"object": obj
+	}
+	return render(request, "conform_delete.html", context)
+
 def comment_thread(request, id):
+	"""
+	Comment thread
+	"""
 	obj = get_object_or_404(Comment, id=id)
 	content_object = obj.content_object
 	content_id = obj.content_object.id
