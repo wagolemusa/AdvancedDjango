@@ -10,5 +10,5 @@ app_name = 'comments'
 urlpatterns = [
 
   path('<int:id>/',comment_thread, name='thread'),
-  	path('<int:id>/delete/', comment_delete),
+  	path('<int:id>/delete/', comment_delete, name='delete'),
 ]
