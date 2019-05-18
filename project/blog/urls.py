@@ -19,11 +19,13 @@ from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
 # from posts import views
+from accounts.views import (login_view, register_view, logout_view)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('comments/', include('comments.urls', namespace='comments')),
     path('posts/', include('posts.urls', namespace='posts')),
+    path('login/', login_view, name='login'),
  
 ]
 
