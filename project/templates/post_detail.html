@@ -6,6 +6,10 @@
 {% block head_title %} {{ instance.title }} | {{ block.supper }} {% endblock head_title %}
 {% block content %}
 
+{% block post_detail_link %}
+<li><a href='{{ instance.get_absolute_url }}'>{{ instance.title }}</a></li>
+{% endblock %}
+
 <div class="row">
 <div class="col-sm-8 col-sm-offset-4">
 <h1>{{ instance.title }} <small>{% if instance.draft %} <span style="red;"></span>{% endif %}{{ instance.publish}}</small></h1>
