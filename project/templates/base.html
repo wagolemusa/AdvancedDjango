@@ -1,0 +1,104 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block head_title %} Advancing Django {% endblock head_title %}</title>
+	<link rel="stylesheet" href='{% static "css/base.css" %}' />
+	<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css" rel="stylesheet">
+<script
+			  src="https://code.jquery.com/jquery-2.2.4.min.js"
+			  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+			  crossorigin="anonymous"></script>
+	<style> 
+	{% block style %} {% endblock style %}
+	</style>
+
+
+{% block head_extra %} {% endblock head_extra %}
+</head>
+<body>
+
+<div id="fb-root"></div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".content-markdown").each(function(){
+			var content = $(this).text()
+			var markedContent = marked(content)
+			$(this).html(markedContent)
+		})
+
+		$(".post-detail-item img").each(function(){
+				$(this).addClass("img-responsive")
+		})
+		// preview title
+		var titleItem = $("#id_title");
+		$("#preview-title").text(titleItem.val())
+
+		var contentInput = $("#id_content");
+		
+		function setContent(value){
+			var markedContent = marked(value)
+			$("#preview-content").html(markedContent)
+			$("#preview-content img").each(function(){
+				$(this).addClass("img-responsive")
+			})
+		}
+		setContent(contentInput.val())
+		contentInput.keyup(function(){
+			var newContent = $(this).val()
+			setContent(newContent)
+		})
+
+		$(".comment-reply-btn").click(function(event){
+			event.preventDefault();
+			$(this).parent().next(".comment-reply").fadeToggle();
+
+		})
+
+	})
+
+</script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=1994101844153657&autoLogAppEvents=1"></script>
+
+{% include "messages_display.html" %}
+
+	<ol class="breadcrumb">
+		<li><a href='{% url "posts:list" %}'>Home</a></li>
+		{% block post_detail_link %}
+		
+		{% endblock %}
+
+		{% if not request.user.is_authenticated %}
+		<li class="pull-right"><a href='{% url "register" %}'>Register</a></li>
+		<li class="pull-right"><a href='{% url "login" %}'>Login</a></li>
+
+		{% else %}
+		<li class="pull-right"><a href='{% url "logout" %}'>Logout</a></li>
+		{% endif %}
+	</ol>
+<div class="container">
+
+{% block content %}{% endblock content %}
+
+
+</div>
+
+<!-- JQuery -->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.6.2/marked.min.js"></script>
+
+
+</body>
+</html>
