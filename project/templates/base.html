@@ -70,6 +70,7 @@
 	<ol class="breadcrumb">
 		<li><a href='{% url "posts:list" %}'>Home</a></li>
 		{% block post_detail_link %}
+		
 		{% endblock %}
 
 		{% if not request.user.is_authenticated %}
