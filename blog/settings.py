@@ -80,11 +80,31 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'xycoders',
+
+        'USER': 'postgres',
+
+        'PASSWORD': 'refuge',
+
+        'HOST': 'localhost',
+
+        'PORT': '5432',
+
     }
+
 }
 
 
@@ -125,11 +145,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# MEDIA_ROOT = "/media/"
+MEDIA_URL  = "/home/xycode/https://www.xycoders.co.ke/public_html/static/"
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    # '/var/www/static/',
-]
+# STATIC_ROOT = '/home/xycoders.co.ke/public_html/static'
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+#     # '/var/www/static/',
+# ]
+
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
-MEDIA_URL  = "/media/"
-MEDIA_ROOT  = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+
+MEDIA_ROOT  = os.path.join(os.path.dirname(BASE_DIR), "media")
