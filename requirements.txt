@@ -5,17 +5,11 @@ django-markdown-deux==1.0.5
 django-pagedown==1.0.6
 djangorestframework==3.9.4
 djangorestframework-jwt==1.11.0
-<<<<<<< HEAD
 gunicorn==20.0.4
-=======
->>>>>>> dfc060e72131f65081c448c86609204473fb241b
 Markdown==3.0.1
 markdown2==2.3.7
 Pillow==5.4.1
 psycopg2==2.8.6
-<<<<<<< HEAD
 psycopg2-binary==2.8.6
-=======
->>>>>>> dfc060e72131f65081c448c86609204473fb241b
 PyJWT==1.7.1
 pytz==2018.9
