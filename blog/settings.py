@@ -154,6 +154,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL  = "/media/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_evn')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_cdn')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
