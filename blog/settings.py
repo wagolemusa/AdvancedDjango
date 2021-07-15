@@ -25,7 +25,7 @@ SECRET_KEY = 'zhpfb@o_)2_&r^boo07a$f)1n-o%_%aebi+sb-)#g*^jxvd#!s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','174.138.45.121']
+ALLOWED_HOSTS = ['127.0.0.1','174.138.45.121', 'www.xycoders.co.ke', 'xycoders.co.ke']
 
 
 # Application definition
