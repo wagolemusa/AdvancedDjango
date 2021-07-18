@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'comments',
     'accounts',
     'posts',
+    'storages',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 MIDDLEWARE = [  
@@ -152,8 +153,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 
-STATIC_URL = '/static/'
-MEDIA_URL  = "/media/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_cdn')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
+# STATIC_URL = '/static/'
+# MEDIA_URL  = "/media/"
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_cdn')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
+
+AWS_ACCESS_KEY_ID = 'XZTT7UYB46BA2RKFCTVX'
+AWS_SECRET_ACCESS_KEY = 'S4uSC2uNJcmsEAciZPG8KBEwnOJGTYSPz0w1wno3cM8'
+AWS_STORAGE_BUCKET_NAME = 'store-image'
+AWS_S3_ENDPOINT_URL = 'https://nyc3.digitaloceanspaces.com'
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'open-folder'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
