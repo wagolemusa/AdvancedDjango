@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'markdown_deux',
-    'crispy-forms',
+    'crispy_forms',
     'pagedown',
     'comments',
     'accounts',
@@ -96,7 +96,7 @@ DATABASES = {
 
         'NAME': 'xycoders',
 
-        'USER': 'wise',
+        'USER': 'postgres',
 
         'PASSWORD': 'refuge',
 
